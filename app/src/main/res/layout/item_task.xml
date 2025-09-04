@@ -60,7 +60,6 @@
                 app:layout_constraintStart_toEndOf="@+id/buttonDetails"
                 app:layout_constraintTop_toTopOf="@+id/buttonEditar"
                 app:layout_constraintEnd_toEndOf="@+id/ConstraintLayout2"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:tint="@color/color_default"
                 android:contentDescription="Proximo"
                 />

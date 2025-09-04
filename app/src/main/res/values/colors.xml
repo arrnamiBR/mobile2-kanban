@@ -7,4 +7,7 @@
     <color name="color_default">#FF4D74</color>
     <color name="color_delete">#FF3636</color>
     <color name="color_details">#03A9F4</color>
+
+    <color name="color_status_todo">#F44336</color>
+    <color name="color_status_done">#00BCD4</color>
 </resources>
