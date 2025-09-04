@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.alexandre.kanban.R
 import com.alexandre.kanban.databinding.FragmentRecoverAccountBinding
 import com.alexandre.kanban.util.initToolbar
+import com.alexandre.kanban.util.showBottomSheet
 
 
 class RecoverAccountFragment : Fragment() {
@@ -47,7 +48,7 @@ class RecoverAccountFragment : Fragment() {
             Toast.makeText(requireContext(), "Tudo certo!", Toast.LENGTH_SHORT).show()
         }
         else {
-            Toast.makeText(requireContext(), "Preencha com um email válido!", Toast.LENGTH_SHORT).show()
+            showBottomSheet(message = R.string.email_empty)
         }
 
     }

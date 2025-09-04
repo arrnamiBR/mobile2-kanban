@@ -30,9 +30,8 @@
             android:layout_height="48dp"
             android:hint="Digite seu e-mail"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/bg_edit_text"
+            style="@style/EditTextTheme"
             />
 
         <TextView
@@ -49,9 +48,8 @@
             android:layout_height="48dp"
             android:hint="Digite sua senha"
             android:inputType="textPassword"
-            android:padding="10dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/bg_edit_text"
+            style="@style/EditTextTheme"
             />
 
         <com.google.android.material.button.MaterialButton
@@ -59,10 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:textColor="@color/color_default"
-            app:backgroundTint="@null"
-            android:background="@drawable/bg_btn"
             android:layout_marginTop="16dp"
+            style="@style/ButtonTheme"
             />
 
         <LinearLayout

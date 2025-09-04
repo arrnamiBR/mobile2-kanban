@@ -23,10 +23,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Criar Conta"
-                android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
-                />
+                android:text="Criar Tarefa"
+                android:textColor="@color/white" />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
@@ -50,12 +49,11 @@
                 android:id="@+id/editTextDescricao"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="Informe sua nova Tarefa"
-                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
+                style="@style/EditTextTheme"
                 />
 
             <TextView
@@ -117,14 +115,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
                 android:text="Salvar"
-                android:textAllCaps="false"
-                android:textColor="@color/color_default"
-                app:backgroundTint="@null"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                style="@style/ButtonTheme"
                 />
 
             <ProgressBar
