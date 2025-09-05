@@ -59,6 +59,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alexandre Guerra"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"

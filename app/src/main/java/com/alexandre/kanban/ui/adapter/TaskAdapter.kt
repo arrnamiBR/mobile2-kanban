@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alexandre.kanban.R
 import com.alexandre.kanban.data.model.Status
@@ -14,9 +16,8 @@ import com.alexandre.kanban.databinding.ItemTaskBinding
 
 class TaskAdapter(
     private val context: Context,
-    private val taskList: List<Task>,
     private val taskSelected: (Task,Int) -> Unit
-): RecyclerView.Adapter<TaskAdapter.MyViewHolder> () {
+): ListAdapter<Task, TaskAdapter.MyViewHolder>(DIFF_CALBACK) {
 
     companion object {
         val SELECT_BACK: Int = 1
@@ -24,6 +25,22 @@ class TaskAdapter(
         val SELECT_EDIT: Int = 3
         val SELECT_DETAILS: Int = 4
         val SELECT_NEXT: Int = 5
+
+        private val DIFF_CALBACK = object : DiffUtil.ItemCallback<Task>() {
+            override fun areItemsTheSame(
+                oldItem: Task,
+                newItem: Task
+            ): Boolean {
+                return oldItem.id == newItem.id && oldItem.description == newItem.description
+            }
+
+            override fun areContentsTheSame(
+                oldItem: Task,
+                newItem: Task
+            ): Boolean {
+                return oldItem == newItem && oldItem.description == newItem.description
+            }
+        }
     }
 
     override fun onCreateViewHolder(
@@ -38,13 +55,11 @@ class TaskAdapter(
         holder: MyViewHolder,
         position: Int
     ) {
-        val task = taskList[position]
+        val task = getItem(position)
         holder.binding.textDescription.text = task.description
 
         setIndicators(task, holder)
     }
-
-    override fun getItemCount() = taskList.size
 
     private fun setIndicators(task: Task, holder: MyViewHolder) {
         when (task.status) {
