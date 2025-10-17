@@ -10,12 +10,15 @@ import com.alexandre.kanban.databinding.FragmentDoneBinding
 import com.alexandre.kanban.databinding.FragmentHomeBinding
 import com.alexandre.kanban.ui.adapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 
 
 class HomeFragment : Fragment() {
 
     var _binding: FragmentHomeBinding? = null
     val binding get() = _binding!!
+
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +32,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        auth = FirebaseAuth.getInstance()
+
+        initListeners()
         initTabs()
+    }
+
+    private fun initListeners() {
+
     }
 
     private fun initTabs() {
