@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.alexandre.kanban.R
 import com.alexandre.kanban.databinding.FragmentRegisterBinding
 import com.alexandre.kanban.util.initToolbar
 import com.alexandre.kanban.util.showBottomSheet
+import com.google.firebase.auth.FirebaseAuth
 
 
 class RegisterFragment : Fragment() {
@@ -47,7 +49,8 @@ class RegisterFragment : Fragment() {
 
         if (email.isNotBlank()) {
             if (senha.isNotBlank()) {
-                Toast.makeText(requireContext(), "Tudo certo!", Toast.LENGTH_SHORT).show()
+                binding.progressBar.isVisible = true
+                registerUser(email, senha)
             }
             else {
                 showBottomSheet(message = getString(R.string.password_empty_register_fragment))
@@ -57,6 +60,28 @@ class RegisterFragment : Fragment() {
         else {
             showBottomSheet(message = getString(R.string.email_empty_register_fragment))
         }
+
+    }
+
+    private fun registerUser(email: String, password: String) {
+        try {
+            val auth: FirebaseAuth = FirebaseAuth.getInstance()
+
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                task ->
+                if (task.isSuccessful) {
+                    findNavController().navigate(R.id.action_global_homeFragment)
+                }
+                else {
+                    Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        catch (e: Exception) {
+            Toast.makeText(requireContext(), e.message.toString(), Toast.LENGTH_SHORT).show()
+        }
+
+        binding.progressBar.isVisible = false
 
     }
 
