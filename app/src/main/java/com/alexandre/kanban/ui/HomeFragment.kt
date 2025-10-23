@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.alexandre.kanban.R
 import com.alexandre.kanban.databinding.FragmentDoneBinding
 import com.alexandre.kanban.databinding.FragmentHomeBinding
 import com.alexandre.kanban.ui.adapter.ViewPagerAdapter
+import com.alexandre.kanban.util.showBottomSheet
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 
@@ -39,7 +41,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun initListeners() {
-
+        binding.btnLogout.setOnClickListener {
+            showBottomSheet(
+                titleButton = R.string.text_button_dialog_confirm_logout,
+                titleDialog = R.string.text_title_dialog_confirm_logout,
+                message = getString(R.string.text_message_dialog_confirm_logout),
+                onClick =  {
+                    auth.signOut()
+                    findNavController().navigate(R.id.action_homeFragment_to_autentication)
+                }
+            )
+        }
     }
 
     private fun initTabs() {
